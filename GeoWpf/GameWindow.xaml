@@ -1,0 +1,50 @@
+﻿<Window x:Class="GeoWpf.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Platform runner" Height="480" Width="640" ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <!-- Player Style -->
+        <Style x:Key="PlayerStyle" TargetType="Image">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Source" Value="pack://application:,,,/Images/stickman1.png"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,1"/>
+            <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="startUp" Visibility="Visible">
+            <Label Content="Platform runner" Foreground="White" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Width="185"/>
+            <Button x:Name="startBtn" Content="Start game" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartButton_Click" Visibility="Visible" Height="77" Width="126" Background="{x:Null}" FontSize="20" FontWeight="Bold" BorderThickness="2,2,2,2"/>
+        </Grid>
+
+        <Grid x:Name="GameGrid" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle x:Name="JumpForceBar" Fill="Blue" HorizontalAlignment="Left" Height="20" Margin="132,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="0" Grid.ColumnSpan="2"/>
+            <Label x:Name="lbl1" Content="Jump force" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" FontSize="20" Margin="1,54,0,0" Grid.ColumnSpan="2" FontWeight="Bold"/>
+            <Label x:Name="lblScore" Content="Label" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="2,1,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+
+            <Canvas x:Name="GameCanvas" Margin="0,103,0,0" Grid.ColumnSpan="2" Background="#FF1E3947">
+                <!-- Player will be added programmatically -->
+            </Canvas>
+            <Label Content="Press/hold space to jump" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="443,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <Label Content="Hold ctrl to use shield" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="465,28,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        </Grid>
+
+        <Grid x:Name="GameOverGrid" Visibility="Collapsed">
+            <Button x:Name="playAgainBtn" Content="Yes" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Height="57" Width="126" Background="{x:Null}" FontSize="20" FontWeight="Bold" BorderThickness="2,2,2,2" Margin="135,248,0,0"/>
+            <Button x:Name="exitBtn" Content="No" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Height="59" Width="126" Background="{x:Null}" FontSize="20" FontWeight="Bold" BorderThickness="2,2,2,2" Margin="373,246,0,0"/>
+            <Label x:Name="lblResult" Foreground="White" Content="" HorizontalAlignment="Left" Margin="127,62,0,0" VerticalAlignment="Top" Width="378" Height="101" FontSize="18" FontWeight="Bold"/>
+
+        </Grid>
+    </Grid>
+</Window>
